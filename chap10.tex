@@ -122,7 +122,7 @@ Aqui, o criador tentou resolver o problema com a página final do índice com a 
 
 Infelizmente, esta solução não é muito melhor. Aqui, há uma quebra de página após a última página do índice. Isso pode fazer com que as entradas na última página de um documento frente e verso tenham espaçamento vertical excessivo (consulte \char`\\\texttt{flush\-bot\-tom}, página 57). \char`\\\texttt{pa\-ge\-break} é claramente o comando errado aqui.
 
-Além disso, \verb|\newpage| ou \char`\\\texttt{clear\-pa\-ge} não seriam suficientes para um documento frente e verso. Por exemplo, se a última página do índice tivesse o numeral romano \textit{vii}, a página direita numerada arábica 1 seguiria imediatamente a página direita numerada romana. Uma página esquerda entre as duas estaria faltando, o que poderia causar sérios problemas com a impressão posterior.
+Além disso, \verb|\newpage| ou \char`\\\texttt{clear\-pa\-ge} não seriam suficientes para um documento frente e verso. Por exemplo, se a última página do índice tivesse o numeral romano $vii$, a página direita numerada arábica 1 seguiria imediatamente a página direita numerada romana. Uma página esquerda entre as duas estaria faltando, o que poderia causar sérios problemas com a impressão posterior.
 
 Meu conselho: Evite usar modelos que contenham erros com relação a coisas tão simples. Aliás, a maneira correta seria:
 \begin{verbatim}
