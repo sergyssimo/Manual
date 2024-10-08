@@ -95,3 +95,40 @@ As alterações entram em vigor imediatamente, ou seja, a partir da página que 
     \label{fig:tab3_10}
 \end{figure}
 
+Chamar \verb|\pagenumbering| sempre redefine o número da página. A página atual se torna o número 1 no estilo de numeração selecionado (\textit{numbering style}). Para que documentos frente e verso produzam os resultados corretos em uma página par, para que a página da esquerda não esteja faltando, você deve sempre adicionar \char`\\\texttt{clear\-dou\-ble\-odd\-pa\-ge} antes de \char`\\\texttt{pa\-ge\-num\-be\-ring}. A próxima seção fornece mais informações sobre páginas em branco potencialmente inseridas.
+
+Deixe-me dizer uma palavra sobre um erro comum encontrado em vários modelos que circulam na Internet. Se você encontrar linhas como a seguinte — sem o comentário inicial, naturalmente — este é um sinal inequívoco de que o criador não leu ou entendeu a observação acima:
+\begin{verbatim}
+        % Atenção! Este exemplo contém erros!
+        % Observe a explicação no texto!
+        \tableofcontents
+        \pagenumbering{arabic}
+        \setcounter{page}{1}
+\end{verbatim}
+
+Como \verb|\tableofcontents| gera o índice, mas não emite automaticamente uma quebra de página no final, a numeração de página já foi alterada na última página do índice. Como não tem um comando \char`\\\texttt{clear\-dou\-ble\-odd\-pa\-ge} antes de \char`\\\texttt{pa\-ge\-num\-be\-ring}, ele recebe uma paginação do número arábico 1. Além disso, a linha final que define a numeração de página para 1 é supérflua, pois isso já é feito por \char`\\\texttt{pa\-ge\-num\-be\-ring}.
+
+Às vezes --- sem o comentário inicial, naturalmente --- você encontra:
+\begin{verbatim}
+        % Atenção! Este exemplo contém erros!
+        % Observe a explicação no texto!
+        \tableofcontents
+        \pagebreak
+        \pagenumbering{arabic}
+        \setcounter{page}{1}
+\end{verbatim}
+
+Aqui, o criador tentou resolver o problema com a página final do índice com a ajuda de \char`\\\texttt{pa\-ge\-break}
+
+Infelizmente, esta solução não é muito melhor. Aqui, há uma quebra de página após a última página do índice. Isso pode fazer com que as entradas na última página de um documento frente e verso tenham espaçamento vertical excessivo (consulte \char`\\\texttt{flush\-bot\-tom}, página 57). \char`\\\texttt{pa\-ge\-break} é claramente o comando errado aqui.
+
+Além disso, \verb|\newpage| ou \char`\\\texttt{clear\-pa\-ge} não seriam suficientes para um documento frente e verso. Por exemplo, se a última página do índice tivesse o numeral romano \textit{vii}, a página direita numerada arábica 1 seguiria imediatamente a página direita numerada romana. Uma página esquerda entre as duas estaria faltando, o que poderia causar sérios problemas com a impressão posterior.
+
+Meu conselho: Evite usar modelos que contenham erros com relação a coisas tão simples. Aliás, a maneira correta seria:
+\begin{verbatim}
+    \tableofcontents
+    \cleardoubleoddpage
+    \pagenumbering{arabic}
+\end{verbatim}
+
+Isso também se aplica se \textbf{scrartcl} usa uma classe que normalmente não inicia uma nova página após o índice. Se você alternar a numeração de páginas, uma nova página à direita deve ser iniciada. Se você não quiser tal alteração, você deve manter o estilo de numeração das páginas consistente em todo o documento sem alterá-lo entre elas. É mais fácil alterar o estilo de numeração ao usar \textbf{scrbook}. Lá você tem o suporte de dois comandos, \char`\\\texttt{front\-matter} e \char`\\\texttt{main\-matter}, para a alternância mais comumente usada. Para mais informações, consulte a seção 3.15, página 94.
