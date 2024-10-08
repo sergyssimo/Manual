@@ -1,0 +1,52 @@
+\documentclass[toc=chapterentrywithdots]{scrbook}
+\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc}
+%\usepackage{scrlayer-scrpage}
+\usepackage{verbatim}
+\usepackage{graphicx}
+% \automark[chapter]{chapter}
+% \clearpairofpagestyles
+% \ohead{\pagemark}
+% \ihead{\headmark}
+\clubpenalty=10000 
+\widowpenalty=10000
+\displaywidowpenalty=10000
+%\chead{\footnotesize\headmark}
+% \cfoot{\footnotesize\pagemark}
+\setlength{\parskip}{3.5pt}
+%
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+%
+
+\begin{document}
+\frontmatter
+\title{Breves Anotações sobre \KOMAScript}
+\author{Baena}
+\date{\today}
+\maketitle
+\tableofcontents
+\frontmatter
+\include{introducao}
+\mainmatter
+\include{chap1}
+\include{chap2}
+\include{chap3}
+\include{chap4}
+\include{chap5}
+\include{chap6}
+\include{chap7}
+\include{chap8}
+\include{chap9}
+\include{chap10}
+% \include{chap10}
+% \include{chap10}
+% \include{chap10}
+% \include{chap10}
+% \include{chap10}
+% \include{chap10}
+
+
+
+\end{document}
