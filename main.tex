@@ -1,6 +1,7 @@
 \documentclass[toc=chapterentrywithdots]{scrbook}
 \usepackage[brazil]{babel}
 \usepackage[T1]{fontenc}
+\usepackage{multicol}
 %\usepackage{scrlayer-scrpage}
 \usepackage{verbatim}
 \usepackage{graphicx}
@@ -24,6 +25,9 @@
 \setlength{\@fptop}{0pt}
 \makeatother
 \setlength{\parindent}{20pt}
+
+\NewDocumentCommand{\cmd}{m}{\texttt{\symbol{`\\}#1}} %permite colocar comandos dentro de comandos ou no texto.
+
 
 \begin{document}
 \frontmatter
@@ -55,7 +59,10 @@
 \include{chap18}
 \include{chap19}
 \include{chap20}
-% \include{chap21}
+\include{chap21}
+\include{chap22}
+% \include{chap23}
+% \include{chap24}
 
 
 

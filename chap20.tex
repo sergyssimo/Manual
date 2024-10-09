@@ -8,4 +8,20 @@ Além do scrlayer-scrpage ou scrpage2, você também pode usar o \textbf{fancyhd
 
 Além dos recursos descritos neste capítulo, o scrlayer-scrpage fornece várias outras funções que provavelmente interessam apenas a um número muito pequeno de usuários e, portanto, são descritas no capítulo 18 da parte II, começando na página 448. No entanto, se as opções descritas na parte I forem insuficientes para seus propósitos, você deve examinar o capítulo 18.
 
+\section{Altura do Cabeçalho e Rodapé}
+As classes padrão do \LaTeX\ não usam muito o rodapé e, se o usam, colocam o conteúdo em uma \cmd{mbox}, o que resulta no rodapé sendo uma única linha de texto. Esta é provavelmente a razão pela qual o próprio \LaTeX\ não tem uma altura de rodapé bem definida. Embora a distância entre a última linha de base da área de texto e a linha de base do rodapé seja definida com \cmd{footskip}, se o rodapé consistir em mais de uma linha de texto, não há uma declaração definitiva se esse comprimento deve ser a distância até a primeira ou a última linha de base do rodapé.
+
+Embora o cabeçalho da página das classes padrão também seja colocado em uma caixa horizontal e, portanto, também seja uma única linha de texto, o \LaTeX\ na verdade fornece um comprimento para definir a altura do cabeçalho. A razão para isso pode ser que essa altura seja necessária para determinar o início da área de texto.
+\begin{verbatim}
+        \footheight
+        \headheight
+        autoenlargeheadfoot=simple switch
+\end{verbatim}
+
+O pacote scrlayer introduz um novo comprimento, \cmd{footheight}, análogo a \cmd{head\-hei\-ght}. Além disso, scrlayer-scrpage interpreta \cmd{footskip} como a distância da última linha de base da área de texto até a primeira linha de base normal do rodapé. O pacote \textbf{typearea} interpreta \cmd{footheight} da mesma forma, então as opções do \textbf{typearea} para a altura do rodapé também podem ser usadas para definir os valores para o pacote scrlayer. Veja as opções \texttt{footheight} e \texttt{footlines} na seção 2.6, página 45) e a opção \texttt{foot\-inclu\-de} na página 42 da mesma seção.
+
+Se você não usar o pacote \textbf{typearea}, você deve ajustar as alturas do cabeçalho e rodapé usando valores apropriados para os comprimentos quando necessário. Para o cabeçalho, pelo menos, o pacote \textbf{geometry}, por exemplo, fornece configurações semelhantes.
+
+Se você escolher uma altura de cabeçalho ou rodapé que seja muito pequena para o conteúdo real, scrlayer-scrpage tenta por padrão ajustar os comprimentos apropriadamente. Ao mesmo tempo, ele emitirá um aviso contendo sugestões para configurações adequadas. Essas alterações automáticas entram em vigor imediatamente após a necessidade delas ter sido detectada e não são revertidas automaticamente, por exemplo, quando o conteúdo do cabeçalho ou rodapé fica menor depois. No entanto, esse comportamento pode ser alterado usando a opção \texttt{auto\-en\-lar\-ge\-head\-foot}. Esta opção reconhece os valores para interruptores simples na tabela 2.5, página 41. A opção é ativada por padrão. Se for desativada, o cabeçalho e o rodapé não serão mais ampliados automaticamente. Apenas um aviso com dicas para configurações adequadas é emitido.
+
 
